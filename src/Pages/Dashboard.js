@@ -1,6 +1,7 @@
 import React from 'react'
 import Sidebar from '../Components/Sidebar';
 import Footer from '../Components/Footer';
+import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
@@ -12,8 +13,19 @@ import cancel4 from '../Img/cancel.png';
 import delivery from '../Img/delivery.png';
 import order from '../Img/order.png';
 import revenue from '../Img/revenue.png';
-import { Table } from '@mui/material';
-const Appointment = () => {
+import Barchart from '../charts/Barchart';
+import Order from '../charts/Order';
+import { Revenue } from '../charts/Revenue';
+
+const Item = styled(Paper)(({ theme }) => ({
+  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: 'center',
+  color: theme.palette.text.secondary,
+}));
+const Dashboard = () => {
+
   return (
     <>
     <Sidebar>
@@ -104,36 +116,42 @@ const Appointment = () => {
         </Grid>
         </Grid>
         </Box>
-
- {/*---------------------------table------------------------------------------------------- */}
- <Box sx={{ padding: '25px', marginLeft: '100px', marginRight: '100px'}}>
+      </div>
+      
+  {/*---------------------------graph------------------------------------------------------- */}
+  <Box sx={{ padding: '25px',marginTop:'20px', marginLeft: '100px', marginRight: '100px'}}>
   <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 2 }}>
-    
-  <Grid item xs={12}>
-    <Card sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor:'plum'}}>      
-      <CardContent>
-          <Table/>
+    <Grid item xs={12} sm={6}>
+    <Card sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', maxWidth: 'auto', overflow: 'auto'}}>        <CardContent>
+          <Barchart />
+        </CardContent>
+      </Card>
+    </Grid>
+    <Grid item xs={12} sm={6}>
+    <Card sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', maxWidth: 'auto', overflow: 'auto' }}>        <CardContent>
+          <Barchart />
+        </CardContent>
+      </Card>
+    </Grid>
+
+    <Grid item xs={12}>
+    <Card sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', maxWidth: 'auto', overflow: 'auto' ,backgroundColor:'plum'}}>        <CardContent>
+          <Order/>
         </CardContent>
       </Card>
     </Grid>
     <Grid item xs={12}>
-    <Card sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', maxWidth: 'auto', overflow: 'auto' ,backgroundColor:'plum'}}>        
-    <CardContent>
-          <Table/>
-        </CardContent>
-      </Card>
-    </Grid>
-    <Grid item xs={12}>
-    <Card sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', maxWidth: 'auto', overflow: 'auto',backgroundColor:'pink' }}>        
-    <CardContent>
-          <Table />
+    <Card sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', maxWidth: 'auto', overflow: 'auto',backgroundColor:'pink' }}>        <CardContent>
+          <Revenue />
         </CardContent>
       </Card>
     </Grid>
   </Grid>
 </Box>
+
+
   {/*---------------------------Footer------------------------------------------------------- */}
-      </div>
+   
       <div style={{marginTop:'100px',maxWidth:'100%'}}> 
     <Footer/>
     </div>
@@ -141,8 +159,7 @@ const Appointment = () => {
     
  
   </>
-
-    )
+  )
 }
 
-export default Appointment
+export default Dashboard;

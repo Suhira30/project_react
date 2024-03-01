@@ -36,3 +36,8 @@
     transform: rotate(360deg);
   }
 }
+/* App.css */
+.app-container {
+  background-color: #1f758f; /* Set the background color for the entire app */
+height: auto;
+}
