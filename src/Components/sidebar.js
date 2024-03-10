@@ -16,11 +16,17 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
+import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
+import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
+import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
+import RateReviewOutlinedIcon from '@mui/icons-material/RateReviewOutlined';
+import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
+import DateRangeOutlinedIcon from '@mui/icons-material/DateRangeOutlined';
+import SmsOutlinedIcon from '@mui/icons-material/SmsOutlined';
+import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import Menu from '@mui/material/Menu';
 import Badge from '@mui/material/Badge';
 import MenuItem from '@mui/material/MenuItem';
-import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import {alpha } from '@mui/material/styles';
@@ -32,9 +38,10 @@ import CardGiftcardIcon from '@mui/icons-material/CardGiftcard';
 import MailOutlinedIcon from '@mui/icons-material/MailOutlined';
 import Avatar from '@mui/material/Avatar';
 import imglogo from '../Img/app-logo.png';
+import { Link } from 'react-router-dom';
 
 const drawerWidth = 280;
-
+/*
 const GradientCircle = styled(Box)(({ theme }) => ({
   width: theme.spacing(5),
   height: theme.spacing(5),
@@ -43,7 +50,7 @@ const GradientCircle = styled(Box)(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'center',
   background: `linear-gradient(45deg, rgba(255, 141, 41, 1) 90%, rgba(252, 177, 112, 0.8) 70%)`,  margin: '0 5px'
-}));
+}));*/
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -107,7 +114,7 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== 'open',
 })(({ theme, open }) => ({
-  background: 'rgba(250, 171, 103, 0.85)',
+  background: `linear-gradient(90deg,  rgba(252, 177, 112, 0.9) 50%,rgba(255, 141, 41, 1) 70%)`,
   height: '100px',
   width:'100%',
   justifyContent: 'center',
@@ -129,7 +136,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
+
   ...theme.mixins.toolbar,
   justifyContent: 'flex-end',
 }));
@@ -137,10 +144,16 @@ const Sidebar =  ({ children }) => {
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
   const navigate = useNavigate();
-
   const handleItemClick = (route) => {
     navigate(route);
   };
+  
+
+
+  const handleNotificationClick = () => {
+    handleItemClick('/notification');
+  };
+  
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -212,21 +225,23 @@ const Sidebar =  ({ children }) => {
       onClose={handleMobileMenuClose}
     >
     {/*------------------------Messages----------------------------------------------------------*/}
-      
-      <MenuItem>
-          <IconButton size="large" aria-label="show 4 new mails" color="inherit">
+    
+      <MenuItem onClick={() => handleItemClick('/chat')}>
+          <IconButton size="large" aria-label="show 4 new mails" color="inherit" >
             <Badge badgeContent={4} color="error">
             <MailOutlinedIcon />
             </Badge>
           </IconButton>
         <p>Messages</p>
       </MenuItem>
+    
       {/*------------------------Notifications----------------------------------------------------------*/}
-      <MenuItem>
+      <MenuItem onClick={() => handleItemClick('/notification')}>
         <IconButton
           size="large"
           aria-label="show 17 new notifications"
           color="inherit"
+           // Call handleNotificationClick on click
         >
           <Badge badgeContent={17} color="error">
             <NotificationsNoneOutlinedIcon />
@@ -236,7 +251,7 @@ const Sidebar =  ({ children }) => {
       </MenuItem>
 
    {/*------------------------gift----------------------------------------------------------*/}
-   <MenuItem onClick={handleMenuClose}>
+   {/*<MenuItem onClick={handleMenuClose}>
         <IconButton
           size="large"
           aria-label="show 16 gift voucher"
@@ -249,7 +264,7 @@ const Sidebar =  ({ children }) => {
         </IconButton>
         <p>Setting</p>
       </MenuItem>
-
+    */}
       {/*------------------------Setting----------------------------------------------------------*/}
       <MenuItem onClick={handleMenuClose}>
         <IconButton
@@ -322,49 +337,67 @@ const Sidebar =  ({ children }) => {
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
           <Box style={{ display: 'flex', alignItems: 'center', marginRight:"30px"}}>
           {/*------------------------Messages-f---------------------------------------------------------*/}
-          <GradientCircle>
-            <IconButton size="large" aria-label="show 4 new mails" color="inherit">
+          <MenuItem component={Link} to="/chat"
+           sx={{
+            '&:hover': {
+              backgroundColor: 'transparent',
+            },
+          }}>
+            <IconButton size="large" 
+            aria-label="show 4 new mails" 
+            color="inherit" 
+            sx={{ padding:'0'}}>
               <Badge badgeContent={4} color="error">
               <MailOutlinedIcon />
-
               </Badge>
             </IconButton>
-            </GradientCircle>
+            </MenuItem>
           {/*------------------------Notifications-f---------------------------------------------------------*/}
-            <GradientCircle>
+          <MenuItem component={Link} to="/notification"
+          sx={{
+            '&:hover': {
+              backgroundColor: 'transparent',
+            },
+          }}>
             <IconButton
               size="large"
               aria-label="show 17 new notifications"
               color="inherit"
+              sx={{ padding:'0' }}
                >
               <Badge badgeContent={17} color="error">
                 <NotificationsNoneOutlinedIcon />
               </Badge>
             </IconButton>
-            </GradientCircle>
+            </MenuItem>
           {/*------------------------gift-f---------------------------------------------------------*/}
-
-            <GradientCircle>
-            <IconButton
+          { /* <IconButton
               size="large"
               aria-label="show 16 gift voucher"
-              color="inherit">
+              color="inherit"
+              sx={{ padding:'0' }}>
               <Badge badgeContent={16} color="error">
                 <CardGiftcardIcon />
               </Badge>
-            </IconButton>
-            </GradientCircle>
+            </IconButton>*/}
             {/*------------------------setting-f---------------------------------------------------------*/}
-            <GradientCircle>
+            <MenuItem component={Link} to="/setting-page"
+          sx={{
+            '&:hover': {
+              backgroundColor: 'transparent',
+            },
+           
+          }}>
             <IconButton
               size="large"
               aria-label="show 3 setting alert"
-              color="inherit" >
+              color="inherit" 
+              sx={{ padding:'0' }}>
               <Badge badgeContent={3} color="error">
                 <SettingsOutlinedIcon />
               </Badge>
-            </IconButton>
-            </GradientCircle></Box>
+            </IconButton>  </MenuItem>
+       </Box>
             {/*------------------------profile-f----------------------------------------------------------*/}
             <Typography>
   <p style={{ marginBottom: 0 }}>Hello,</p>
@@ -412,16 +445,32 @@ const Sidebar =  ({ children }) => {
             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
         </DrawerHeader>
-        <Divider />
+      
         <List>
           {['Dashboard', 'Appointment', 'User detail', 'Job detail','Review','Notification','Calender','Chat','Setting page'].map((text, index) => (
-            <ListItem key={text} disablePadding onClick={() => handleItemClick(`/${text.toLowerCase().replace(' ', '-')}`)} >
+            <ListItem key={text} disablePadding onClick={() => handleItemClick(`/${text.toLowerCase().replace(' ', '-')}`)}
+            sx={{
+              '&:hover': {
+                backgroundColor: 'rgba(252, 177, 112, 0.9)', 
+                borderRadius: '10px',
+                width:'270px',
+                marginLeft:'20px'
+              },
+            
+            }} >
               
               <ListItemButton>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> :             <MailOutlinedIcon />
-}
-                </ListItemIcon>
+              <ListItemIcon>
+          {index === 0 && <HomeOutlinedIcon />}
+          {index === 1 && < WorkOutlineOutlinedIcon/>}
+          {index === 2 && <PersonOutlineOutlinedIcon />}
+          {index === 3 && <WorkOutlineOutlinedIcon />}
+          {index === 4 && <RateReviewOutlinedIcon  />}
+          {index === 5 && <NotificationsNoneOutlinedIcon />}
+          {index === 6 && <DateRangeOutlinedIcon/>}
+          {index === 7 && <SmsOutlinedIcon />}
+          {index === 8 && <LogoutOutlinedIcon />}
+        </ListItemIcon>
                 <ListItemText primary={text} />
               </ListItemButton>
             </ListItem>

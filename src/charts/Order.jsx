@@ -1,43 +1,42 @@
+
+
 import React from "react";
 import { Chart } from "react-google-charts";
 
 export const data = [
-  [
-    { type: "number", label: "x" },
-    { type: "number", label: "values" },
-    { id: "i0", type: "number", role: "interval" },
-    { id: "i1", type: "number", role: "interval" },
-    { id: "i2", type: "number", role: "interval" },
-    { id: "i2", type: "number", role: "interval" },
-    { id: "i2", type: "number", role: "interval" },
-    { id: "i2", type: "number", role: "interval" },
-  ],
-  [1, 100, 90, 110, 85, 96, 104, 120],
-  [2, 120, 95, 130, 90, 113, 124, 140],
-  [3, 130, 105, 140, 100, 117, 133, 139],
-  [4, 90, 85, 95, 85, 88, 92, 95],
-  [5, 70, 74, 63, 67, 69, 70, 72],
-  [6, 30, 39, 22, 21, 28, 34, 40],
-  [7, 80, 77, 83, 70, 77, 85, 90],
-  [8, 100, 90, 110, 85, 95, 102, 110],
+  ["x", "dogs", "cats"],
+  [0, 0, 0],
+  [1, 10, 5],
+  [2, 23, 15],
+  [3, 17, 9],
+  [4, 18, 10],
+  [5, 9, 5],
+  [6, 11, 3],
+  [7, 27, 19],
 ];
 
 export const options = {
-  title: "Order ",
-  curveType: "function",
-  series: [{ color: "#D9544C" }],
-  intervals: { style: "bars" },
-  legend: "none",
+  hAxis: {
+    title: "Time",
+  },
+  vAxis: {
+    title: "Popularity",
+  },
+  series: {
+    1: { curveType: "function" },
+  },
 };
 
-export default  function Order() {
+export default function Order() {
   return (
     <Chart
-      chartType="LineChart"
-      width="900px"
-      height="400px"
-      data={data}
-      options={options}
-    />
+    chartType="LineChart"
+    width="100%"
+    height="100%"
+    data={data}
+    options={options}
+  />
   );
 }
+
+

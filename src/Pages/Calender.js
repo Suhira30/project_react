@@ -1,13 +1,17 @@
 import React from 'react'
 import Sidebar from '../Components/Sidebar';
 import Footer from '../Components/Footer';
+
 const Calender = () => {
+  const pageStyle = {
+    backgroundColor: '#F3F2F7',
+  };
   return (
     <>
+        <div style={pageStyle}>
     <Sidebar>
     <div style={{padding: '25px' ,marginTop:'100px',marginLeft:'150px',marginRight:'150px',backgroundColor:"pink"}}> 
-        <h1>This is the Calender</h1>
-        <p>Welcome Shardha...</p>
+    
       </div>
       <div>
  
@@ -16,7 +20,7 @@ const Calender = () => {
     <Footer/>
     </div>
     </Sidebar>
-    
+    </div>
  
   </>
 

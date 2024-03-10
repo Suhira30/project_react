@@ -28,7 +28,7 @@ export function Revenue() {
     <Chart
       chartType="LineChart"
       width="900px"
-      height="400px"
+      height="300px"
       data={data}
       options={options}
       
