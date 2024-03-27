@@ -1,7 +1,7 @@
 import React from "react"
 import MUIDataTable from "mui-datatables";
 
-  export default function tabledata () {
+  export default function TableJobDetail () {
     const columns = ["Name", "Company", "City", "State"];
 
 const data = [
@@ -25,12 +25,12 @@ const data = [
 
 const options = {
   filterType: 'checkbox',
-  rowsPerPage:6,
+  rowsPerPage:4,
   
 };
 
   return (
-    <div style={{ width: '1000px', maxWidth: 'auto%',height:'auto'}}>
+    <div style={{ width: '100%', height:'auto'}}>
 
   <MUIDataTable
     title={"Employee List"}

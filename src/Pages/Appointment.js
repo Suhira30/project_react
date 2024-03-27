@@ -140,7 +140,6 @@ const Appointment = () => {
     marginTop:'0px',
     padding:'0',
     border: 'none',
-    backgroundColor:'indigo',
     marginBottom:'0',
    
   }}>       <Tabledata />

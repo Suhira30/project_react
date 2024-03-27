@@ -122,7 +122,7 @@ const Item = styled(Paper)(({ theme }) => ({
     marginTop:'0px',
     padding:'0',
     border: 'none',
-    backgroundColor:'indigo',
+    
     marginBottom:'0',
    
   }}>       <Tabledata />

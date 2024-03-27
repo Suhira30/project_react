@@ -11,7 +11,7 @@ const chat = () => {
         <div style={pageStyle}>
     <Sidebar>
     <div style={{padding: '25px' ,marginTop:'100px',marginLeft:'150px',marginRight:'150px',backgroundColor:"pink"}}> 
-        <h1>This is the Dashboard</h1>
+        <h1>This is the Chat page</h1>
         <p>Additional content goes here...</p>
       </div>
       <div style={{marginTop:'100px',marginLeft:'150px',marginRight:'150px'}}> 

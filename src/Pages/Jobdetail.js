@@ -14,7 +14,7 @@ import order from '../Img/order.png';
 import revenue from '../Img/revenue.png';
 import { Table } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import Tabledata from '../charts/Tabledata';
+import TableJobDetail from '../charts/TableJobDetail';
 import JobdemandLine from '../charts/JobdemandLine';
 import { FormJobDetail } from '../Components/FormJobDetail';
 
@@ -112,23 +112,22 @@ const Jobdetail = () => {
         </Box>
       </div>
           {/*---------------------------02 grid------------------------------------------------------- */}
-  <Box sx={{ padding: '0',marginTop:'30px', marginLeft: 'auto', marginRight: 'auto',maxWidth: '1000px' }}>
+          <Box sx={{ padding: '0',marginTop:'30px', marginLeft: 'auto', marginRight: 'auto',maxWidth: '1000px' }}>
   <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} justifyContent="center" alignItems="center"  >
-         {/*-----------graph-Bar left----------- */}
+         {/*-----------table left----------- */}
     <Grid item xs={12} sm={6}>
-    <Card sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', maxWidth: 'auto', overflow: 'auto'}}>        <CardContent>
-    <Tabledata/>
-        </CardContent>
+    <Card sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', maxWidth: 'auto', overflow: 'auto'}}>       
+          <TableJobDetail  />
+        
       </Card>
     </Grid>
-    {/*-----------graph-Bar-Right----------- */}
+    {/*-----------form-Right----------- */}
     <Grid item xs={12} sm={6}>
-    <Card sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', maxWidth: 'auto', overflow: 'auto' }}>        <CardContent>
-    <FormJobDetail/>
-        </CardContent>
+    <Card sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', maxWidth: 'auto', overflow: 'auto' }}>        
+          < FormJobDetail />
       </Card>
-    </Grid>
-   </Grid></Box>
+    </Grid></Grid></Box>
+
   {/*---------------------------Footer------------------------------------------------------- */}
    
   <div style={{marginTop:'100px',maxWidth:'100%'}}> 
